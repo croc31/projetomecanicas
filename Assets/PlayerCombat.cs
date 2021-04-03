@@ -9,13 +9,23 @@ public class PlayerCombat : MonoBehaviour
     public Transform attackPoint;
     [Range(0, 5f)] [SerializeField]  float attackRange = .5f;
     public int attackDamage = 20;
+    public float attackRate = 2f;
+
     public LayerMask enemyLayers;
+
+    [SerializeField] private bool showGizmos = true;
+
+    float nextAttackTime = 0f;
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Time.time >= nextAttackTime)
         {
-            Attack();
+            if(Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Attack();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
     }
 
@@ -32,6 +42,8 @@ public class PlayerCombat : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
+        if(!showGizmos)
+            return;
         if(attackPoint == null)
             return;
 

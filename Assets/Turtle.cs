@@ -17,15 +17,15 @@ public class Turtle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (aiPath.desiredVelocity.x >= 0.01f)//moving to the rigth
+        if (aiPath.desiredVelocity.x >= 0.01f)//moving to the right
         {
-            animator.SetBool("moveRigth", true);
+            animator.SetBool("moveRight", true);
             animator.SetBool("moveLeft", false);
-            Debug.Log("Rigth");
+            Debug.Log("Right");
         }
         else if (aiPath.desiredVelocity.x <= -0.01f)//moving to the left
         {
-            animator.SetBool("moveRigth", false);
+            animator.SetBool("moveRight", false);
             animator.SetBool("moveLeft", true);
             Debug.Log("Left");
         }
