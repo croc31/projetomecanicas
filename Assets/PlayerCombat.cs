@@ -7,21 +7,24 @@ public class PlayerCombat : MonoBehaviour
 
     public Animator animator;
     public Transform attackPoint;
-    [Range(0, 5f)] [SerializeField]  float attackRange = .5f;
+    public HealthBar healthBar;
+
     public int attackDamage = 20;
+    public  float attackRange = .5f;
     public float attackRate = 2f;
     public int maxHealth = 100;
-    int currentHealth;
-
     public LayerMask enemyLayers;
+    public bool showGizmos = true;
 
-    [SerializeField] private bool showGizmos = true;
-
+    int currentHealth;
     float nextAttackTime = 0f;
 
     void Start()
     {
         currentHealth = maxHealth;
+        
+        if(healthBar != null)
+            healthBar.SetMaxHealth(maxHealth);
     }
 
     void Update()
@@ -49,9 +52,24 @@ public class PlayerCombat : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        //Animação de levar dano
         currentHealth -= damage;
+
+        if(healthBar != null)
+            healthBar.SetHealth(currentHealth);
+
         if(currentHealth <= 0)
+        {
+            Die();
             Debug.Log("Jogador morreu");
+        }
+    }
+
+    void Die()
+    {
+        //Animação de morte
+        //Destroy(gameObject);
+        //Respawn
     }
 
     void OnDrawGizmosSelected()
