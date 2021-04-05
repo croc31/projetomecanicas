@@ -10,12 +10,19 @@ public class PlayerCombat : MonoBehaviour
     [Range(0, 5f)] [SerializeField]  float attackRange = .5f;
     public int attackDamage = 20;
     public float attackRate = 2f;
+    public int maxHealth = 100;
+    int currentHealth;
 
     public LayerMask enemyLayers;
 
     [SerializeField] private bool showGizmos = true;
 
     float nextAttackTime = 0f;
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     void Update()
     {
@@ -40,6 +47,13 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if(currentHealth <= 0)
+            Debug.Log("Jogador morreu");
+    }
+
     void OnDrawGizmosSelected()
     {
         if(!showGizmos)
@@ -49,4 +63,5 @@ public class PlayerCombat : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
 }

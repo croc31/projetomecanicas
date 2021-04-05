@@ -12,13 +12,18 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+
+        if(healthBar != null)
+            healthBar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        
+        if(healthBar != null)
+            healthBar.SetHealth(currentHealth);
+        
         if (currentHealth <= 0)
         {
             Die();

@@ -15,9 +15,9 @@ TagManager:
   - 
   - 
   - Enemies
-  - obstacle
-  - 
-  - 
+  - Breakable
+  - MapObstacle
+  - Player
   - 
   - 
   - 
