@@ -11,19 +11,7 @@ public class EnemyCombat : MonoBehaviour
     float nextAttackTime = 0f;
     public LayerMask enemyLayers;
     
-    [SerializeField] private bool showGizmos = true;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    [SerializeField] private bool alwaysShowGizmos = false;
 
     public void Attack()
     {
@@ -32,17 +20,25 @@ public class EnemyCombat : MonoBehaviour
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
             foreach(Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<PlayerCombat>().TakeDamage(attackDamage);
+                enemy.GetComponent<Player>().TakeDamage(attackDamage);
             }
             nextAttackTime = Time.time + 1f / attackRate;
         }
         
     }
 
+    void OnDrawGizmos()
+    {
+        if(!alwaysShowGizmos)
+            return;
+        if(attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
     void OnDrawGizmosSelected()
     {
-        if(!showGizmos)
-            return;
         if(attackPoint == null)
             return;
 

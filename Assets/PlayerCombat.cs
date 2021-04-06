@@ -7,25 +7,20 @@ public class PlayerCombat : MonoBehaviour
 
     public Animator animator;
     public Transform attackPoint;
-    public HealthBar healthBar;
+    
 
     public int attackDamage = 20;
     public  float attackRange = .5f;
     public float attackRate = 2f;
-    public int maxHealth = 100;
+    
     public LayerMask enemyLayers;
-    public bool showGizmos = true;
+    public bool alwaysShowGizmos = false;
 
-    int currentHealth;
+    
     float nextAttackTime = 0f;
 
     void Start()
-    {
-        currentHealth = maxHealth;
-        
-        if(healthBar != null)
-            healthBar.SetMaxHealth(maxHealth);
-    }
+    {}
 
     void Update()
     {
@@ -50,31 +45,9 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    void OnDrawGizmos()
     {
-        //Animação de levar dano
-        currentHealth -= damage;
-
-        if(healthBar != null)
-            healthBar.SetHealth(currentHealth);
-
-        if(currentHealth <= 0)
-        {
-            Die();
-            Debug.Log("Jogador morreu");
-        }
-    }
-
-    void Die()
-    {
-        //Animação de morte
-        //Destroy(gameObject);
-        //Respawn
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        if(!showGizmos)
+        if(!alwaysShowGizmos)
             return;
         if(attackPoint == null)
             return;
@@ -82,4 +55,11 @@ public class PlayerCombat : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
+    void OnDrawGizmosSelected()
+    {
+        if(attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
 }

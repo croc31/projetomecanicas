@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -49,7 +50,6 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
-
         Debug.Log("Quit the game");
         Application.Quit();
     }
