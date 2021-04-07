@@ -7,16 +7,24 @@ public class Enemy : MonoBehaviour
 
     public int maxHealth = 100;
     int currentHealth;
+    public HealthBar healthBar;
 
     void Start()
     {
         currentHealth = maxHealth;
+
+        if(healthBar != null)
+            healthBar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if(currentHealth <= 0)
+        
+        if(healthBar != null)
+            healthBar.SetHealth(currentHealth);
+        
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -24,7 +32,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        
+        Destroy(gameObject);
     }
 
 }

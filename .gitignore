@@ -1,0 +1,6 @@
+[Tt]emp/
+[Ll]ogs/
+
+.vs
+*.csproj
+*.sln

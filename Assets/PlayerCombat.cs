@@ -7,15 +7,20 @@ public class PlayerCombat : MonoBehaviour
 
     public Animator animator;
     public Transform attackPoint;
-    [Range(0, 5f)] [SerializeField]  float attackRange = .5f;
+    
+
     public int attackDamage = 20;
+    public  float attackRange = .5f;
     public float attackRate = 2f;
-
+    
     public LayerMask enemyLayers;
+    public bool alwaysShowGizmos = false;
 
-    [SerializeField] private bool showGizmos = true;
-
+    
     float nextAttackTime = 0f;
+
+    void Start()
+    {}
 
     void Update()
     {
@@ -40,10 +45,18 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    void OnDrawGizmos()
+    {
+        if(!alwaysShowGizmos)
+            return;
+        if(attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
     void OnDrawGizmosSelected()
     {
-        if(!showGizmos)
-            return;
         if(attackPoint == null)
             return;
 
