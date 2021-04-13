@@ -5,7 +5,6 @@ using UnityEngine;
 public class Spawn : MonoBehaviour
 {
     public GameObject entity;
-    public Transform anchor;
     public int height = 10;
     public int width = 10;
     public int maxEntities = 5;
@@ -16,11 +15,13 @@ public class Spawn : MonoBehaviour
 
     private List<GameObject> entities;
     private float xPos, yPos;
+    private Transform anchor;
 
     // Start is called before the first frame update
     void Start()
     {
         entities = new List<GameObject>();
+        anchor = GetComponent<Transform>();
         StartCoroutine(DropEnemy());
     }
 
