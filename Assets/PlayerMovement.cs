@@ -11,16 +11,14 @@ public class PlayerMovement : MonoBehaviour
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
     
     private bool m_FacingRight = true;
-    private Rigidbody2D m_Rigidbody2D;
+    public Rigidbody2D m_Rigidbody2D;
     private Vector3 m_Velocity = Vector3.zero;
 
     float horizontal_move = 0f;
     float vertical_move = 0f;
 
     void Start()
-    {
-        m_Rigidbody2D = GetComponent<Rigidbody2D>();
-    }
+    {}
 
     void Update()
     {
