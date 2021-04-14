@@ -20,7 +20,7 @@ public class EnemyCombat : MonoBehaviour
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
             foreach(Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<Player>().TakeDamage(attackDamage);
+                enemy.GetComponentInChildren<Player>().TakeDamage(attackDamage);
             }
             nextAttackTime = Time.time + 1f / attackRate;
         }
