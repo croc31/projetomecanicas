@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
 
+    bool isDead = false;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -26,15 +28,16 @@ public class Player : MonoBehaviour
         if(healthBar != null)
             healthBar.SetHealth(currentHealth);
 
-        if(currentHealth <= 0)
+        if(currentHealth <= 0 && !isDead)
         {
             Die();
-            Debug.Log("Jogador morreu");
+            Debug.Log("the player has been slayed");
         }
     }
 
     void Die()
     {
+        isDead = true;
         //Animação de morte
         //Destroy(gameObject);
         //respawn

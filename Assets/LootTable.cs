@@ -5,6 +5,6 @@ using System.Collections;
 public class LootTable : ScriptableObject
 {
     public GameObject item;
-    public int quantity;
+    //public int quantity;
 }
 

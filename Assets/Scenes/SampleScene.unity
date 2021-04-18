@@ -314,7 +314,7 @@ MonoBehaviour:
   entity: {fileID: 451619797}
   height: 6
   width: 10
-  maxEntities: 2
+  maxEntities: 1
   activated: 1
   delay: 1
   alwaysShowGizmos: 0
@@ -570,6 +570,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 929207312}
+  lootTable: {fileID: 11400000, guid: 3e504be86c60b8344b7776577b41e8b4, type: 2}
+  minDropQuantity: 0
+  maxDropQuantity: 1
+  frequency: 100
 --- !u!58 &451619801
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -770,7 +774,6 @@ GameObject:
   - component: {fileID: 472614309}
   - component: {fileID: 472614308}
   - component: {fileID: 472614307}
-  - component: {fileID: 472614310}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -870,18 +873,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 472614305}
   m_CullTransparentMesh: 0
---- !u!114 &472614310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472614305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792da1e497eec9f49a0a832e59cf693c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &482168663
 GameObject:
   m_ObjectHideFlags: 0
@@ -4581,6 +4572,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 0}
+  lootTable: {fileID: 0}
+  minDropQuantity: 0
+  maxDropQuantity: 1
+  frequency: 100
 --- !u!1 &2076588652
 GameObject:
   m_ObjectHideFlags: 0
