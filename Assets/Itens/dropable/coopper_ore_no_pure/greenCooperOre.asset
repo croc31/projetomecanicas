@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4acd6de457784b94d80cd7765571cbd2, type: 3}
-  m_Name: New lootTable
+  m_Name: greenCooperOre
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  quantity: 0
+  item: {fileID: 1684314095493005646, guid: 64752465202b6214aa9b01bf539aa9f8, type: 3}
+  quantity: 5
