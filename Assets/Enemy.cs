@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
     public HealthBar healthBar;
+    public LootTable lootTable;
     void Start()
     {
         currentHealth = maxHealth;
@@ -28,29 +29,30 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    /*
-    private void Drops()
+    
+    private void Drop()
     {
-        if (thisDrop.LootItens != null) {
-            for (int i = 0; i < thisDrop.LootItens.Length; ++i)
-            {
-                ItenQuantity currentIten = thisDrop.LootItens[i];
-                if (currentIten != null)
+        if (lootTable != null)
+        {
+            if(lootTable.quantity != 0 && lootTable.item != null){
+                float xPos, yPos;
+                GameObject droppedItem;
+                xPos = GetComponent<Transform>().position.x;
+                yPos = GetComponent<Transform>().position.y;
+                for (int i = 0; i < lootTable.quantity; ++i)
                 {
-                    for (int j = 0; j < currentIten.quantity; ++j)
-                    {
-                        ItenDisplay display = new ItenDisplay();
-                        display.SetIten(currentIten.thisloot);
-                        Debug.Log("posi " + j + " item: " + display.thisIten.name);
-                        Instantiate(display.gameObject, transform.position, Quaternion.identity);
-                    }
+                    droppedItem = Instantiate(lootTable.item, new Vector3(xPos, yPos, -1), Quaternion.identity);
+                    droppedItem.SetActive(true);
                 }
+                Debug.Log("Droppado");
             }
         }
-    }*/
+    }
+
     private void Die()
     {
-       
+        
+        Drop();
         Destroy(gameObject);
     }
 
