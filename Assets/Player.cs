@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
             healthBar.SetMaxHealth(maxHealth);
     }
 
+   
     public void TakeDamage(int damage)
     {
         //Animação de levar dano
