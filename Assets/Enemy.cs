@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 100;
     int currentHealth;
     public HealthBar healthBar;
-
     void Start()
     {
         currentHealth = maxHealth;
@@ -29,9 +28,29 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-
-    void Die()
+    /*
+    private void Drops()
     {
+        if (thisDrop.LootItens != null) {
+            for (int i = 0; i < thisDrop.LootItens.Length; ++i)
+            {
+                ItenQuantity currentIten = thisDrop.LootItens[i];
+                if (currentIten != null)
+                {
+                    for (int j = 0; j < currentIten.quantity; ++j)
+                    {
+                        ItenDisplay display = new ItenDisplay();
+                        display.SetIten(currentIten.thisloot);
+                        Debug.Log("posi " + j + " item: " + display.thisIten.name);
+                        Instantiate(display.gameObject, transform.position, Quaternion.identity);
+                    }
+                }
+            }
+        }
+    }*/
+    private void Die()
+    {
+       
         Destroy(gameObject);
     }
 
