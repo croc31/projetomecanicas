@@ -36,8 +36,11 @@ public class Player : MonoBehaviour
         //Animação de levar dano
         currentHealth -= damage;
 
-        if(healthBar != null)
+        if (healthBar != null)
+        {
             healthBar.SetHealth(currentHealth);
+
+        }
 
         if(currentHealth <= 0 && !isDead)
         {
