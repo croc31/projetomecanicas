@@ -5,9 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public HealthBar healthBar;
-    public Transform spawnPoint;
+
     public int maxHealth = 100;
     int currentHealth;
+
+    bool isDead = false;
+
+    public GameManager gameManager;
 
     void Start()
     {
@@ -15,8 +19,17 @@ public class Player : MonoBehaviour
         
         if(healthBar != null)
             healthBar.SetMaxHealth(maxHealth);
+        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        //InvokeRepeating("DoDamage", 1f, 5f);
     }
 
+
+    public void DoDamage()
+    {
+        TakeDamage(1);
+    }
    
     public void TakeDamage(int damage)
     {
@@ -26,17 +39,18 @@ public class Player : MonoBehaviour
         if(healthBar != null)
             healthBar.SetHealth(currentHealth);
 
-        if(currentHealth <= 0)
+        if(currentHealth <= 0 && !isDead)
         {
             Die();
-            Debug.Log("Jogador morreu");
+            Debug.Log("the player has been slayed");
         }
     }
 
     void Die()
     {
+        isDead = true;
         //Animação de morte
-        //Destroy(gameObject);
-        //respawn
+        gameManager.Respawn();
+        gameObject.GetComponentInParent<Destroy>().doDestroy();
     }
 }
