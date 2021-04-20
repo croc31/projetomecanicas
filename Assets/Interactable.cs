@@ -6,13 +6,14 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public bool isInRange;
+    public bool noKeyNeed;
     public KeyCode interactKey;
     public UnityEvent interactAction;
     public SpriteRenderer rederer;
      
     private void Update()
     {
-        if (isInRange && Input.GetKey(interactKey))
+        if (isInRange && (Input.GetKey(interactKey) || noKeyNeed))
         {
             interactAction.Invoke();
         }

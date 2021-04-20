@@ -19,7 +19,7 @@ TagManager:
   - MapObstacle
   - Player
   - Interactable
-  - 
+  - UI
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3250060775
+    locked: 0
+  - name: UI
+    uniqueID: 4169945183
     locked: 0
