@@ -19,12 +19,15 @@ public class Enemy : MonoBehaviour
     //todas as mortes sortearão drops.
     [Range(0, 100.0f)] [SerializeField] private float frequency = 100.0f;
 
+    private TintColor tintColor;
+
     int realMaxDrop;
 
     bool isDead = false;
 
     void Start()
     {
+        tintColor = GetComponent<TintColor>();
         currentHealth = maxHealth;
 
         realMaxDrop = maxDropQuantity + 1;
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        tintColor.SetTintColor(new Color(255, 0, 0, 255));
         currentHealth -= damage;
         
         if(healthBar != null)

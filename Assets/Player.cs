@@ -11,7 +11,8 @@ public class Player : MonoBehaviour
 
     bool isDead = false;
 
-    public GameManager gameManager;
+    private GameManager gameManager;
+    private TintColor tintColor;
 
     void Start()
     {
@@ -20,9 +21,8 @@ public class Player : MonoBehaviour
         if(healthBar != null)
             healthBar.SetMaxHealth(maxHealth);
         
+        tintColor = GetComponent<TintColor>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-        //InvokeRepeating("DoDamage", 1f, 5f);
     }
 
 
@@ -33,13 +33,12 @@ public class Player : MonoBehaviour
    
     public void TakeDamage(int damage)
     {
-        //Animação de levar dano
+        tintColor.SetTintColor(new Color(255, 0, 0, 255));
         currentHealth -= damage;
 
         if (healthBar != null)
         {
             healthBar.SetHealth(currentHealth);
-
         }
 
         if(currentHealth <= 0 && !isDead)
