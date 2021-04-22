@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
 
     private GameManager gameManager;
     private TintColor tintColor;
+    private CinemachineVirtualCamera cam;
 
     void Start()
     {
@@ -25,6 +27,15 @@ public class Player : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
+    void Update()
+    {
+        if(cam == null)
+        {
+            Debug.Log("Setting camera");
+            cam = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
+            cam.m_Follow = gameObject.transform;
+        }
+    }
 
     public void DoDamage()
     {
@@ -52,7 +63,7 @@ public class Player : MonoBehaviour
     {
         isDead = true;
         //Animação de morte
-        gameManager.Respawn();
         gameObject.GetComponentInParent<Destroy>().doDestroy();
+        gameManager.Respawn();
     }
 }

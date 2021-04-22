@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [Range(0, 100f)] [SerializeField] private float m_RunSpeed = 40f;
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;
     
-    private bool m_FacingRight = true;
     public Rigidbody2D m_Rigidbody2D;
+    private bool m_FacingRight = true;
     private Vector3 m_Velocity = Vector3.zero;
 
     float horizontal_move = 0f;
@@ -65,5 +65,4 @@ public class PlayerMovement : MonoBehaviour
 		transform.localScale = theScale;
        
 	}
-
 }
