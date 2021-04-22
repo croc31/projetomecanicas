@@ -1,22 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public Transform respawnPoint;
     public GameObject player;
     public float respawnTime;
-    private CinemachineVirtualCamera camera;
+    public int iLevelToRespawn = 1;
+    private Transform respawnPoint;
 
     private float respawnTimeStart;
     private bool respawn;
-
-    public void Start()
-    {
-        camera = GameObject.Find("PlayerCamera").GetComponent<CinemachineVirtualCamera>();
-    }
 
     public void Update()
     {
@@ -25,9 +20,13 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
-        Debug.Log("Respaw call.");
         respawnTimeStart = Time.time;
         respawn = true;
+    }
+
+    void SearchSpawnPoint()
+    {
+        respawnPoint = GameObject.FindWithTag("SpawnPos").transform;
     }
 
     public void CheckRespawn()
@@ -35,8 +34,9 @@ public class GameManager : MonoBehaviour
         if(Time.time >= respawnTimeStart - respawnTime && respawn)
         {
             Debug.Log("Respawning player...");
-            var playerTemp = Instantiate(player, respawnPoint);
-            camera.m_Follow = playerTemp.transform;
+            SceneManager.LoadScene(iLevelToRespawn);
+            SearchSpawnPoint();
+            Instantiate(player, respawnPoint);
             respawn = false;
         }
     }

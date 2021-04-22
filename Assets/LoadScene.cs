@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    public string SceneToLoad;
 
-    public void NextScene()
+    public int iLevelToLoad;
+    public string sLevelToLoad;
+
+    public bool useIntergerToLoad = false;
+
+    void Start()
     {
-        SceneManager.LoadScene(SceneToLoad);
+
     }
+
+
 
 }
