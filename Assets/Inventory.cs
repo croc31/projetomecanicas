@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallBack;
+
     public List<Item> inventoryItems = new List<Item>();
     public int space = 30;
     public bool AddItem(Item item)
@@ -30,10 +31,16 @@ public class Inventory : MonoBehaviour
                 Debug.Log("Inventory full");
                 return false;
             }
-            inventoryItems.Add(item);
 
+            inventoryItems.Add(item);
+            if (onItemChangedCallBack != null)
+            {
+                onItemChangedCallBack.Invoke();
+            }
+            return true;
         }
-        return true;
+
+        return false;
     }
 
     public void RemoveItem(Item item)
@@ -41,6 +48,10 @@ public class Inventory : MonoBehaviour
         if (item != null)
         {
             inventoryItems.Remove(item);
+        }
+        if (onItemChangedCallBack != null)
+        {
+            onItemChangedCallBack.Invoke();
         }
     }
 }
