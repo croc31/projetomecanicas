@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
      
     private void Update()
     {
-        if (isInRange && (Input.GetKey(interactKey) || noKeyNeed))
+        if (isInRange && (Input.GetKeyDown(interactKey) || noKeyNeed))
         {
             interactAction.Invoke();
         }
