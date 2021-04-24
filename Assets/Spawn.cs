@@ -35,21 +35,33 @@ public class Spawn : MonoBehaviour
 
     IEnumerator DropEnemy()
     {
-        while(!hasLimit || alreadySpawned < maxEntities)
+        while(true)
         {
             CheckDestroyed();
-            if(activated && entities.Count < maxCoexistentEntities)
+            if(activated)
             {
-                xPos = Random.Range(anchor.position.x - (width / 2), anchor.position.x + (width / 2));
-                yPos = Random.Range(anchor.position.y - (height / 2), anchor.position.y + (height / 2));
-                entities.Add(Instantiate(entity, new Vector3(xPos, yPos, 0.0f), Quaternion.identity));
-                entities[entities.Count - 1].SetActive(true);
-                alreadySpawned++;
+                if(!hasLimit || alreadySpawned < maxEntities)
+                {
+                    if(entities.Count < maxCoexistentEntities)
+                    {
+                        xPos = Random.Range(anchor.position.x - (width / 2), anchor.position.x + (width / 2));
+                        yPos = Random.Range(anchor.position.y - (height / 2), anchor.position.y + (height / 2));
+                        entities.Add(Instantiate(entity, new Vector3(xPos, yPos, 0.0f), Quaternion.identity));
+                        entities[entities.Count - 1].SetActive(true);
+                        alreadySpawned++;
+                    }
+                }
+                else if(entities.Count == 0)
+                {
+                    Debug.Log("Spawn:: Trigger condition has been reached.");
+                    break;
+                }
             }
             yield return new WaitForSeconds(delay);
         }
         if(isTrigger)
         {
+            Debug.Log("Spawn:: Invoking trigger...");
             m_event.Invoke();
         }
             
