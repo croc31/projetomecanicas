@@ -21,8 +21,13 @@ public class LoadLevel : MonoBehaviour
         GameObject collisionGameObject = other.gameObject;
         if(collisionGameObject.name == "Player")
         {
-            StartCoroutine(LoadScene());
+            CallLoad();
         }
+    }
+
+    public void CallLoad()
+    {
+        StartCoroutine(LoadScene());
     }
 
     IEnumerator LoadScene()

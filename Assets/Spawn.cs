@@ -1,15 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Spawn : MonoBehaviour
 {
     public GameObject entity;
     public int height = 10;
     public int width = 10;
-    public int maxEntities = 5;
+    public int maxCoexistentEntities = 5;
     public bool activated = true;
     public float delay = 5.0f;
+
+    public bool hasLimit = false;
+    public int maxEntities = 5;
+    public bool isTrigger = false;
+    public UnityEvent m_event;
+
+    int alreadySpawned = 0;
 
     public bool alwaysShowGizmos = false;
 
@@ -27,18 +35,24 @@ public class Spawn : MonoBehaviour
 
     IEnumerator DropEnemy()
     {
-        while(true)
+        while(!hasLimit || alreadySpawned < maxEntities)
         {
             CheckDestroyed();
-            if(activated && entities.Count < maxEntities)
+            if(activated && entities.Count < maxCoexistentEntities)
             {
                 xPos = Random.Range(anchor.position.x - (width / 2), anchor.position.x + (width / 2));
                 yPos = Random.Range(anchor.position.y - (height / 2), anchor.position.y + (height / 2));
                 entities.Add(Instantiate(entity, new Vector3(xPos, yPos, 0.0f), Quaternion.identity));
                 entities[entities.Count - 1].SetActive(true);
+                alreadySpawned++;
             }
             yield return new WaitForSeconds(delay);
         }
+        if(isTrigger)
+        {
+            m_event.Invoke();
+        }
+            
     }
 
     void CheckDestroyed()
