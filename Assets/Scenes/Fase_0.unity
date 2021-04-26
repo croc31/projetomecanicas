@@ -36260,8 +36260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTag: Player
-  hasStartPos: 0
-  startPosTag: StartPos
 --- !u!1001 &1097323277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39954,6 +39952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863319777311109630, guid: 23b4bc7781e0db84aa2fd013add830cd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1863319777311109631, guid: 23b4bc7781e0db84aa2fd013add830cd,
         type: 3}
