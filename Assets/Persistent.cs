@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Persistent : MonoBehaviour
 {
-
-    public string objectTag = "Player";
+    private string objectTag;
     private GameObject[] objects;
 
     void Start()
     {
+        objectTag = gameObject.tag;
         DontDestroyOnLoad(gameObject);
     }
 
