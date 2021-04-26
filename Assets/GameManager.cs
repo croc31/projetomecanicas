@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,7 +33,7 @@ public class GameManager : MonoBehaviour
         if(Time.time >= respawnTimeStart - respawnTime && respawn)
         {
             Debug.Log("Respawning player...");
-            SceneManager.LoadScene(iLevelToRespawn);
+            LoadLevel.LoadScene(iLevelToRespawn);
             SearchSpawnPoint();
             Instantiate(player, respawnPoint);
             respawn = false;

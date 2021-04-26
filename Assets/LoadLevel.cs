@@ -11,10 +11,6 @@ public class LoadLevel : MonoBehaviour
     public int transitionTime;
     public bool useIntergerToLoad = false;
 
-    void Start()
-    {
-
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -42,6 +38,11 @@ public class LoadLevel : MonoBehaviour
         {
             SceneManager.LoadScene(sLevelToLoad);
         }
+    }
+
+    public static void LoadScene(int scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
 }
