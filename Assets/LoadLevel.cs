@@ -11,18 +11,19 @@ public class LoadLevel : MonoBehaviour
     public int transitionTime;
     public bool useIntergerToLoad = false;
 
-    void Start()
-    {
-
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         GameObject collisionGameObject = other.gameObject;
         if(collisionGameObject.name == "Player")
         {
-            StartCoroutine(LoadScene());
+            CallLoad();
         }
+    }
+
+    public void CallLoad()
+    {
+        StartCoroutine(LoadScene());
     }
 
     IEnumerator LoadScene()
@@ -37,6 +38,11 @@ public class LoadLevel : MonoBehaviour
         {
             SceneManager.LoadScene(sLevelToLoad);
         }
+    }
+
+    public static void LoadScene(int scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 
 }

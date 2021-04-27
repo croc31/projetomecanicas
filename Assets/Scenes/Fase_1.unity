@@ -457,9 +457,26 @@ MonoBehaviour:
   entity: {fileID: 7782900616206122348, guid: 17f1d1d148de21e4aab39e8e6122454d, type: 3}
   height: 6
   width: 10
-  maxEntities: 2
-  activated: 0
+  maxCoexistentEntities: 2
+  activated: 1
   delay: 8
+  hasLimit: 1
+  maxEntities: 3
+  isTrigger: 1
+  m_event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1373070259}
+        m_MethodName: CallLoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   alwaysShowGizmos: 0
 --- !u!4 &398746508
 Transform:
@@ -26761,6 +26778,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3281140605345109416, guid: 5435281184713ed489b3d16ab475c808, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5435281184713ed489b3d16ab475c808, type: 3}
+--- !u!114 &1373070259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6343197693186191329, guid: 5435281184713ed489b3d16ab475c808,
+    type: 3}
+  m_PrefabInstance: {fileID: 1373070258}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224d654da5f6713408746b59d7990c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1421560932
 GameObject:
   m_ObjectHideFlags: 0
