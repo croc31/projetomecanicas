@@ -15,10 +15,12 @@ public class Persistent : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        objects = GameObject.FindGameObjectsWithTag(objectTag);
-        if(objects.Length > 1)
-        {
-            Destroy(objects[1]);
+        if (objectTag != null) {
+            objects = GameObject.FindGameObjectsWithTag(objectTag);
+            if (objects.Length > 1)
+            {
+                Destroy(objects[1]);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     public bool isInRange;
+    private bool hasInvoke;
     public bool noKeyNeed;
     public KeyCode interactKey;
     public UnityEvent interactAction;
@@ -13,9 +14,15 @@ public class Interactable : MonoBehaviour
      
     private void Update()
     {
-        if (isInRange && (Input.GetKeyDown(interactKey) || noKeyNeed))
+        if (!hasInvoke && isInRange && (Input.GetKeyDown(interactKey) || noKeyNeed))
         {
             interactAction.Invoke();
+            hasInvoke = true;
+        }
+        else if(hasInvoke && (!isInRange || Input.GetKeyDown(interactKey)))
+        {
+            interactAction.Invoke();
+            hasInvoke = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D collider)

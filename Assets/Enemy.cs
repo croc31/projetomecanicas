@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     int currentHealth;
     public HealthBar healthBar;
 
-    public LootTable lootTable;
+    public GameObject item;
     [Range(0, 25)] [SerializeField] private int minDropQuantity = 0;
     [Range(0, 25)] [SerializeField] private int maxDropQuantity = 1;
     
@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
     
     private void Drop()
     {
-        if (lootTable != null && lootTable.item != null && !isDead)
+        if (item != null  && !isDead)
         {
             if(frequency >= Random.Range(0.0f, 100.0f))
             {
@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
                 yPos = GetComponent<Transform>().position.y;
                 for (int i = 0; i < quantity; ++i)
                 {
-                    droppedItem = Instantiate(lootTable.item, new Vector3(xPos, yPos, -1), Quaternion.identity);
+                    droppedItem = Instantiate(item, new Vector3(xPos, yPos, -1), Quaternion.identity);
                     droppedItem.SetActive(true);
                 }
                 Debug.Log("Dropado " + quantity + " itens");

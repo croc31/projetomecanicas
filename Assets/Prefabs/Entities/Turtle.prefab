@@ -551,9 +551,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   healthBar: {fileID: 7782900615728579241}
-  lootTable: {fileID: 11400000, guid: 3e504be86c60b8344b7776577b41e8b4, type: 2}
-  minDropQuantity: 0
-  maxDropQuantity: 1
+  item: {fileID: 1334741313849887376, guid: 221a41c6250e1154ab088d2494a2f0d4, type: 3}
+  minDropQuantity: 1
+  maxDropQuantity: 2
   frequency: 100
 --- !u!114 &7782900616206122328
 MonoBehaviour:

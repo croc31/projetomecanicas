@@ -23,7 +23,7 @@ public class inventoryUI : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; ++i)
         {
-            if (i < inventory.inventoryItems.Count)
+            if (i < inventory.inventoryItems.Count && inventory.inventoryItems[i] != null)
             {
                 slots[i].AddItem(inventory.inventoryItems[i]);
             }
@@ -33,4 +33,6 @@ public class inventoryUI : MonoBehaviour
             }
         }
     }
+
+    
 }
